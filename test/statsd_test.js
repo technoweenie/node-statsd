@@ -33,4 +33,7 @@ client.decrement(['hits', 'misses'])
 assert.equal('hits:-1|c', socket.sent.shift())
 assert.equal('misses:-1|c', socket.sent.shift())
 
+client.gauge('users', 50)
+assert.equal('users:50|g', socket.sent.shift())
+
 assert.deepEqual([], socket.sent)
